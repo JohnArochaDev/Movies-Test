@@ -1,9 +1,15 @@
 const Movie = require('../models/movie');
 
 module.exports = {
+  index,
   new: newMovie,
   create
 };
+
+async function index(req, res) {
+  const movies = await Movie.find({});
+  res.render('movies/index', { movies });
+}
 
 function newMovie(req, res) {
   // We'll want to be able to render an  
@@ -22,7 +28,7 @@ async function create(req, res) {
     await Movie.create(req.body);
     // Always redirect after CUDing data
     // We'll refactor to redirect to the movies index after we implement it
-    res.redirect('/movies/new');
+    res.redirect('/movies');  // Update this line
   } catch (err) {
     // Typically some sort of validation error
     console.log(err);
