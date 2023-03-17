@@ -2,19 +2,25 @@ const Movie = require('../models/movie');
 
 module.exports = {
   index,
+  show,
   new: newMovie,
   create
 };
 
 async function index(req, res) {
   const movies = await Movie.find({});
-  res.render('movies/index', { movies });
+  res.render('movies/index', { title: 'All Movies', movies });
+}
+
+async function show(req, res) {
+  const movie = await Movie.findById(req.params.id);
+  res.render('movies/show', { title: 'Movie Detail', movie });
 }
 
 function newMovie(req, res) {
   // We'll want to be able to render an  
   // errorMsg if the create action fails
-  res.render('movies/new', { errorMsg: '' });
+  res.render('movies/new', { title: 'Add Movie', errorMsg: '' });
 }
 
 async function create(req, res) {

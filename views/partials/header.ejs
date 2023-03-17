@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mongoose Movies</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title><%= title %></title>
 </head>
 <body>
   <nav>
-    <a href="/">Home</a>
-    &nbsp;|&nbsp;
-    <a href="/movies/new">New Movie</a>
-    &nbsp;|&nbsp;
-    <a href="/movies">All Movies</a>
+    <img src="/images/camera.svg">
+    <a href="/movies/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD MOVIE</a>
+    <a href="/movies" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL MOVIES</a>
   </nav>
-  
+  <main>
+    <h1><%= title %></h1>
