@@ -7,11 +7,13 @@
   <div><%= movie.releaseYear %></div>
   <div>Rating: </div>
   <div><%= movie.mpaaRating %></div>
-  <div>Cast: </div>
-  <div><%= movie.cast.join(', ') %></div>
   <div>Now Showing: </div>
   <div><%= movie.nowShowing ? 'Yes' : 'Nope' %></div>
+  <!-- start cast list -->
+
+  <!-- end cast list -->
 </section>
+<!-- add to cast form below this comment -->
 
 <br><br><h2>Reviews</h2>
 <form id="add-review-form" method="POST"

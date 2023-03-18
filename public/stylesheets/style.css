@@ -66,7 +66,9 @@ nav > a.active {
   grid-template-columns: repeat(2, minmax(auto, 22rem));
 }
 
-#new-form *, #add-review-form * {
+#new-form *,
+#add-review-form *,
+#add-performer-form * {
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -118,14 +120,39 @@ table td {
   font-weight: bold;
 }
 
-#add-review-form {
+#add-review-form,
+#add-performer-form {
   display: grid;
   grid-template-columns: auto auto;
-  gap: 1rem;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-#add-review-form input[type="submit"] {
-  width: 8rem;
+#add-review-form input[type="submit"],
+#add-performer-form input[type="submit"]  {
+  width: 10rem;
   grid-column: 2 / 3;
-  margin-bottom: 2rem;
+}
+
+hr {
+  color: #424748
+}
+
+#badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* padding: 1rem; */
+  width: 80%;
+  border: 2px solid #B8C0C2;
+  border-radius: .5rem;
+  margin: .5rem 0 2rem;
+}
+
+.badge {
+  background-color: #B8C0C2;
+  padding: .5rem;
+  margin: .5rem;
+  border-radius: .3rem;
+  font-size: .8rem;
+  text-align: center;
 }
