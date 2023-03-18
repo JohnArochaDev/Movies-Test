@@ -41,7 +41,11 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Yep, we can define variables! -->
+      <% let total = 0 %>
       <% movie.reviews.forEach(function(r) { %>
+        <!-- Accumulate the total rating -->
+        <% total += r.rating %>
         <tr>
           <!-- .toLocaleDateString() provides a more friendly date format -->
           <td><%= r.createdAt.toLocaleDateString() %></td>
@@ -49,6 +53,11 @@
           <td><%= r.rating %></td>
         </tr>
       <% }); %>
+      <!-- Add a row to display the avg AFTER the forEach iteration  -->
+      <tr>
+        <td colspan="2"></td>
+        <td><strong><%= (total / movie.reviews.length).toFixed(1) %></strong></td>
+      </tr>
     </tbody>
   </table>
 <% } else { %>
