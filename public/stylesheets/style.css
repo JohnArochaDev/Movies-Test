@@ -157,3 +157,12 @@ hr {
   text-align: center;
 }
 
+#show-page ul {
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+  
+#show-page li {
+  font-weight: bold;
+}

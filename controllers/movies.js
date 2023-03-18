@@ -1,4 +1,5 @@
 const Movie = require('../models/movie');
+const Performer = require('../models/performer');
 
 module.exports = {
   index,
@@ -15,7 +16,12 @@ async function index(req, res) {
 async function show(req, res) {
   // Populate the cast array with performer docs instead of ObjectIds
   const movie = await Movie.findById(req.params.id).populate('cast');
-  res.render('movies/show', { title: 'Movie Detail', movie });
+  // Mongoose query builder approach to retrieve performers not the movie:
+    // Performer.find({}).where('_id').nin(movie.cast)
+  // The native MongoDB approach uses a query object to find 
+  // performer docs whose _ids are not in the movie.cast array like this:
+  const performers = await Performer.find({ _id: { $nin: movie.cast } }).sort('name');
+  res.render('movies/show', { title: 'Movie Detail', movie, performers });
 }
 
 function newMovie(req, res) {
