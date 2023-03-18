@@ -4,7 +4,7 @@ const Movie = require('../models/movie');
 module.exports = {
   new: newPerformer,
   create
-};
+}
 
 async function newPerformer(req, res) {
   //Sort performers by their name

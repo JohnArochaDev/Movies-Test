@@ -13,7 +13,8 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-  const movie = await Movie.findById(req.params.id);
+  // Populate the cast array with performer docs instead of ObjectIds
+  const movie = await Movie.findById(req.params.id).populate('cast');
   res.render('movies/show', { title: 'Movie Detail', movie });
 }
 
@@ -31,10 +32,10 @@ async function create(req, res) {
     if (req.body[key] === '') delete req.body[key];
   }
   try {
-    await Movie.create(req.body);
-    // Always redirect after CUDing data
-    // We'll refactor to redirect to the movies index after we implement it
-    res.redirect('/movies');  // Update this line
+    // Update this line because now we need the _id of the new movie
+    const movie = await Movie.create(req.body);
+    // Redirect to the new movie's show functionality 
+    res.redirect(`/movies/${movie._id}`);
   } catch (err) {
     // Typically some sort of validation error
     console.log(err);

@@ -10,10 +10,16 @@
   <div>Now Showing: </div>
   <div><%= movie.nowShowing ? 'Yes' : 'Nope' %></div>
   <!-- start cast list -->
-
+  <div>Cast:</div>
+  <ul>
+    <%- movie.cast.map(p => 
+      `<li>${p.name} <small>${p.born.toLocaleDateString()}</small></li>`
+    ).join('') %>
+  </ul>
   <!-- end cast list -->
 </section>
 <!-- add to cast form below this comment -->
+
 
 <br><br><h2>Reviews</h2>
 <form id="add-review-form" method="POST"
